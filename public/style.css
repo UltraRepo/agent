@@ -1,0 +1,349 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+:root {
+  /* Using Syncfusion's Material 3 variables */
+  --app-primary-color: rgb(var(--color-sf-primary));
+  --app-primary-container: rgb(var(--color-sf-primary-container));
+  --app-on-primary: rgb(var(--color-sf-on-primary));
+  --app-secondary-color: rgb(var(--color-sf-secondary));
+  --app-secondary-container: rgb(var(--color-sf-secondary-container));
+  --app-surface: rgb(var(--color-sf-surface));
+  --app-background: rgb(var(--color-sf-background));
+  --app-surface-variant: rgb(var(--color-sf-surface-variant));
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  height: 100vh;
+  overflow: hidden;
+  min-width: 190px;
+  background-color: var(--app-background);
+  color: rgb(var(--color-sf-on-background));
+}
+
+/* Material Icons styling */
+.material-icons {
+  vertical-align: middle;
+}
+
+.material-icons.small {
+  font-size: 18px;
+}
+
+.toolbar-icon {
+  font-size: 20px;
+  color: rgb(var(--color-sf-on-surface-variant));
+}
+
+.action-icon {
+  font-size: 20px;
+  color: rgb(var(--color-sf-primary));
+}
+
+/* Sidebar styles */
+.sidebar-nav {
+  background-color: rgb(var(--color-sf-primary));
+  color: rgb(var(--color-sf-on-primary));
+  min-width: 70px;
+  min-height: 100vh;
+  transition: all 0.3s;
+  z-index: 1030;
+}
+
+.sidebar-nav .nav-item {
+  width: 50px;
+  height: 50px;
+  color: rgba(var(--color-sf-on-primary), 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.sidebar-nav .nav-item:hover, 
+.sidebar-nav .nav-item.active {
+  background-color: rgba(var(--color-sf-on-primary), 0.2);
+  color: rgb(var(--color-sf-on-primary));
+}
+
+/* Chat history panel */
+.chat-history {
+  background-color: var(--app-surface);
+  border-right: 1px solid var(--app-surface-variant);
+  height: 100vh;
+  overflow-y: auto;
+  z-index: 1020;
+}
+
+.chat-item {
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.chat-item:hover {
+  background-color: rgba(var(--color-sf-primary), 0.05);
+}
+
+.chat-item.active {
+  background-color: rgba(var(--color-sf-primary), 0.1);
+}
+
+.avatar img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+
+/* Mobile header */
+.mobile-header {
+  border-bottom: 1px solid var(--app-surface-variant);
+  background-color: var(--app-surface);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1010;
+  height: 50px;
+}
+
+/* Theme toggle button */
+.theme-toggle .btn {
+  background-color: var(--app-surface-variant);
+  color: rgb(var(--color-sf-on-surface-variant));
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Main content area */
+.main-content {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Splitter container */
+#splitter {
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Chat container */
+.chat-leftContent {
+  flex: 1 0 0%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+#chatContainer {
+  height: 100%;
+  overflow: hidden;
+}
+
+/* App panel */
+.chat-rightContent {
+  flex: 1 0 0%;
+  padding: 15px;
+  flex-direction: column;
+  border-left: 1px solid var(--app-surface-variant);
+  height: 100%;
+}
+
+#helpBtn {
+  margin-bottom: 15px;
+}
+
+iframe#appFrame {
+  flex-grow: 1;
+  border: 1px solid var(--app-surface-variant);
+  border-radius: 4px;
+  width: 100%;
+  height: 100%;
+}
+
+/* Send button overrides - multiple selectors for thoroughness */
+/* This tackles more potential class combinations used by Syncfusion */
+button.e-send, 
+.e-send.e-btn, 
+.e-chat .e-send, 
+.e-control.e-chat .e-input-group button.e-send,
+.e-chat .e-input-group button.e-btn.e-send,
+.e-chat .e-message-editor .e-input-group button.e-send,
+.e-chat .e-message-editor .e-input-group button {
+  min-width: 50px !important;
+  width: 50px !important;
+}
+
+/* Hide original Send text and replace with Go */
+button.e-send .e-btn-content, 
+.e-chat button.e-send .e-btn-content,
+.e-chat .e-message-editor .e-input-group button .e-btn-content,
+.e-control button.e-send .e-btn-content {
+  font-size: 0 !important;
+}
+
+button.e-send .e-btn-content::after, 
+.e-chat button.e-send .e-btn-content::after,
+.e-chat .e-message-editor .e-input-group button .e-btn-content::after,
+.e-control button.e-send .e-btn-content::after {
+  content: "Go" !important;
+  font-size: 14px !important;
+  display: inline-block !important;
+}
+
+/* Chat suggestions styling */
+.e-chat .e-quick-reply {
+  background-color: rgba(var(--color-sf-primary), 0.08);
+  border: 1px solid rgba(var(--color-sf-primary), 0.2);
+  border-radius: 16px;
+  padding: 5px 12px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  display: inline-block;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.e-chat .e-quick-reply:hover {
+  background-color: rgba(var(--color-sf-primary), 0.15);
+}
+
+/* Syncfusion Chat UI customizations */
+.e-chat-avatar {
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+}
+
+.chat_agent_avatar {
+  background-image: url('./images/agent.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Message bubble styling */
+.e-chat .e-card .e-card-content {
+  padding: 8px 12px;
+}
+
+.e-chat .e-card.e-card-received .e-card-content {
+  background-color: rgba(var(--color-sf-surface-variant), 0.8);
+  border-radius: 0 8px 8px 8px;
+}
+
+.e-chat .e-card.e-card-sent .e-card-content {
+  background-color: rgba(var(--color-sf-primary-container), 0.8);
+  border-radius: 8px 0 8px 8px;
+}
+
+.e-chat .e-message-editor {
+  border-top: 1px solid var(--app-surface-variant);
+  padding: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .chat-leftContent, .chat-rightContent {
+    width: 100%;
+  }
+  
+  .chat-rightContent {
+    position: fixed;
+    top: 50px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+    background-color: var(--app-surface);
+    padding: 10px;
+  }
+  
+  .main-content {
+    padding-top: 50px;
+  }
+  
+  /* Mobile sidebar overlay */
+  .sidebar-nav.mobile-visible {
+    position: fixed;
+    top: 50px;
+    left: 0;
+    bottom: 0;
+    z-index: 1050;
+  }
+
+  /* Mobile header adjustments for small screens */
+  .mobile-header .fw-bold {
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* Input field adjustments for small screens */
+  .e-chat .e-message-editor .e-input-group {
+    display: flex;
+  }
+
+  .e-chat .e-message-editor .e-input-group .e-input {
+    min-width: 0;
+    flex: 1;
+  }
+}
+
+/* Extra small screen adjustments (190px width) */
+@media (max-width: 300px) {
+  .mobile-header .btn {
+    padding: 2px 5px;
+    margin-right: 5px;
+  }
+  
+  .mobile-header .fw-bold {
+    max-width: 70px;
+    font-size: 14px;
+  }
+  
+  /* Make the send button more compact */
+  button.e-send, 
+  .e-send.e-btn, 
+  .e-chat .e-send, 
+  .e-control.e-chat .e-input-group button.e-send,
+  .e-chat .e-input-group button.e-btn.e-send,
+  .e-chat .e-message-editor .e-input-group button.e-send,
+  .e-chat .e-message-editor .e-input-group button {
+    width: 35px !important;
+    min-width: 35px !important;
+  }
+  
+  /* Hide text labels in the help button on very small screens */
+  .help-text {
+    display: none;
+  }
+  
+  #helpBtn {
+    padding: 5px 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .e-chat .e-message-editor {
+    padding: 5px;
+  }
+  
+  .e-chat .e-message-editor .e-input-group .e-input {
+    padding: 5px;
+    font-size: 14px;
+  }
+} 

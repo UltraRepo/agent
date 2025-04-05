@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UltraRepo Agent Prototype</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Syncfusion Material 3 Theme -->
+  <link href="https://cdn.syncfusion.com/ej2/material3.css" rel="stylesheet">
+  <script src="https://cdn.syncfusion.com/ej2/23.1.36/dist/ej2.min.js"></script>
+  <!-- Google Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container-fluid p-0 vh-100">
+    <div class="row g-0 h-100">
+      <!-- Sidebar - visible on desktop, hidden on mobile -->
+      <div id="sidebar" class="col-auto d-none d-md-flex flex-column sidebar-nav">
+        <div class="logo-container text-center p-3">
+          <span class="fs-4 fw-bold text-white">Ultra</span>
+        </div>
+        <div class="nav-items d-flex flex-column align-items-center mt-4">
+          <a href="#" class="nav-item active" title="Chat">
+            <span class="material-icons">chat</span>
+          </a>
+          <a href="#" class="nav-item" title="Tasks">
+            <span class="material-icons">assignment</span>
+          </a>
+          <a href="#" class="nav-item" title="Files">
+            <span class="material-icons">folder</span>
+          </a>
+          <a href="#" class="nav-item" title="Settings">
+            <span class="material-icons">settings</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Chat History - visible on desktop, hidden on mobile -->
+      <div id="chatHistory" class="col-md-3 d-none d-md-block chat-history">
+        <div class="p-3 border-bottom">
+          <h5>Recent Chats</h5>
+          <div class="input-group mt-2">
+            <input type="text" class="form-control" placeholder="Search...">
+            <button class="btn btn-outline-secondary" type="button">
+              <span class="material-icons small">search</span>
+            </button>
+          </div>
+        </div>
+        <div class="chat-list p-2">
+          <div class="chat-item active p-2">
+            <div class="d-flex align-items-center">
+              <div class="avatar">
+                <img src="./images/agent.svg" alt="UltraRepo Agent" class="rounded-circle">
+              </div>
+              <div class="ms-2">
+                <div class="fw-bold">UltraRepo Agent</div>
+                <div class="text-muted small">How can I help you today?</div>
+              </div>
+            </div>
+          </div>
+          <div class="chat-item p-2">
+            <div class="d-flex align-items-center">
+              <div class="avatar">
+                <img src="./images/user.svg" alt="Code Assistant" class="rounded-circle">
+              </div>
+              <div class="ms-2">
+                <div class="fw-bold">Code Assistant</div>
+                <div class="text-muted small">Check your latest PR</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main content area -->
+      <div class="col main-content">
+        <!-- Mobile header with menu toggle -->
+        <div class="d-md-none mobile-header p-2 d-flex align-items-center">
+          <button id="mobileMenuToggle" class="btn btn-sm btn-outline-secondary me-2" aria-label="Toggle menu">
+            <span class="material-icons" style="font-size: 18px;">menu</span>
+          </button>
+          <span class="fw-bold">UltraRepo Agent</span>
+          <button id="mobileAppToggle" class="btn btn-sm btn-outline-secondary ms-auto" aria-label="Toggle app panel">
+            <span class="material-icons" style="font-size: 18px;">desktop_windows</span>
+          </button>
+        </div>
+
+        <!-- Responsive layout container -->
+        <div id="splitter" class="h-100 d-flex flex-column flex-md-row">
+          <!-- Chat container - always visible -->
+          <div class="chat-leftContent">
+            <div id="chatContainer"></div>
+          </div>
+          
+          <!-- App panel - visible on desktop, toggleable on mobile -->
+          <div class="chat-rightContent d-none d-md-flex">
+            <button id="helpBtn" class="e-btn e-primary mb-3">
+              <span class="material-icons me-1" style="font-size: 18px;">help</span>
+              <span class="help-text">Launch Help App</span>
+            </button>
+            <iframe id="appFrame" src="https://docs.openwebui.com/" title="App Panel"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dark Mode Toggle -->
+  <div class="theme-toggle position-fixed bottom-0 end-0 m-3">
+    <button id="themeToggle" class="btn btn-sm rounded-circle" aria-label="Toggle dark mode">
+      <span class="material-icons" style="font-size: 18px;">dark_mode</span>
+    </button>
+  </div>
+
+  <!-- Bootstrap JS Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="bundle.js"></script>
+</body>
+</html>
